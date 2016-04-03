@@ -1,9 +1,11 @@
 var index = require("./routes/index");
+var ver = require("./routes/ver");
 
 module.exports = function(app) {
 	// Inicio
-	app.get("/", index.index);
-	app.get("/index.html", index.index);
+	app.get("/", index.content);
+	app.get("/index", index.content);
+	app.get("/ver", ver.content);
 
 	// Captura errores 404 y los reenvia al manejador de errores
 	app.use(function(req, res, next) {
