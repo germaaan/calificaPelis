@@ -2,11 +2,9 @@
 var pg = require("pg");
 var connectionString = "postgres://calificador:calificador@localhost/calificaciones";
 
-// Obtener datos de todas las películas
-exports.content = function(req, res) {
+exports.seleccionar = function(req, res) {
 	var results = [];
 
-	// Conectar con el cliente PostgreSQL
 	pg.connect(connectionString, function(err, client, done) {
 		if (err) {
 			done();
@@ -17,15 +15,12 @@ exports.content = function(req, res) {
 			});
 		}
 
-		// Consulta de selección
-		var query = client.query("SELECT * FROM peliculas");
+		var query = client.query("SELECT nombre FROM peliculas");
 
-		// Devolvemos los resultados de la consulta de selección
 		query.on("row", function(row) {
 			results.push(row);
 		});
 
-		// Cerramos la conexión y devolvemos los datos
 		query.on("end", function() {
 			done();
 
@@ -34,5 +29,11 @@ exports.content = function(req, res) {
 				data: results
 			});
 		});
+	});
+};
+
+exports.leer = function(req, res) {
+	res.render("listado", {
+		title: "CalificaPelis: Listado"
 	});
 };

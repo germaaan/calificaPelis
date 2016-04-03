@@ -5,7 +5,8 @@ module.exports = function(app) {
 	// Inicio
 	app.get("/", index.content);
 	app.get("/index", index.content);
-	app.get("/ver", ver.content);
+	app.get("/ver", ver.seleccionar);
+	app.post("/ver", ver.leer);
 
 	// Captura errores 404 y los reenvia al manejador de errores
 	app.use(function(req, res, next) {

@@ -43,7 +43,7 @@
 		"postinstall": "npm run libs && npm run sass",
 		"restart": "pm2 restart app.js && pm2 save",
 		"check": "npm-check",
-		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.js *.json app/*.js app/routes/*.js",
-		"jshint": "jshint *.js *.json app/*.js app/routes/*.js"
+		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.js *.json app/*.js app/routes/*.js public/js/*.js",
+		"jshint": "jshint *.js *.json app/*.js app/routes/*.js public/js/*.js"
 	}
 }
