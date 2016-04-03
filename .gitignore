@@ -1,7 +1,12 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Dependency directory
+# Directorio instalación módulos
 node_modules
+
+# Directorio de librerías instaladas
+public/lib
+
+# Directorio de hojas de estilo CSS generadas
+public/style/css
+
+# Logs y copias de seguridad
+*.log
+*~
