@@ -1,5 +1,3 @@
-#!/bin/bash
-
 sudo apt-get install postgresql postgresql-contrib
 sudo su - postgres
 cd /home/germaaan/proyectos/calificaPelis/database

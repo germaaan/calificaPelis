@@ -5,13 +5,82 @@ block content
 	script(type='text/javascript').
 		listarPeliculas(!{JSON.stringify(data)})
 
-	h2(style='text-align: center') Seleccionar película:
+	.col-xs-12(style='height:22px;')
+	.container
+		.row
+			.container.col-md-4
+				h2(style='text-align: center') Seleccionar película:
+				.col-xs-12(style='height:14px;')
+				form.form-horizontal(role='form', action='ver', method='post')
+					.form-group
+						.center-block
+							select#listado.form-control(name='listado')
+					.form-group
+						.center-block
+							button.btn.btn-default.center-block(type='submit') Ver críticas
+
+			.container.col-md-8
+				h1.col-md-5.col-md-offset-3 Pelicula
+				.col-xs-12(style='height:14px;')
+				form.form-horizontal(role='form')
+					.form-group
+						label.control-label.col-sm-5(for='director') Director:
+						.col-md-7
+							input#director.form-control(type='text', style='background-color: white', disabled='')
+					.form-group
+						label.control-label.col-sm-5(for='anio') Año:
+						.col-sm-7
+							input#anio.form-control(type='text', style='background-color: white', disabled='')
+					.form-group
+						label.control-label.col-sm-5(for='genero') Género:
+						.col-sm-7
+							input#genero.form-control(type='text', style='background-color: white', disabled='')
+				.col-xs-12(style='height:25px;')
 
 	.container
-		form.form-horizontal(role='form', action='ver', method='post')
-			.form-group
-				.col-md-4.col-md-offset-4
-					select#listado.form-control(name='listado')
-			.form-group
-				.center-block
-					button.btn.btn-default.center-block(type='submit') Ver críticas
+		ul.list-group(style='height: 43%; overflow-y: scroll;')
+			li.list-group-item
+				span.badge 4 / 10
+				strong Usuario: 
+				| germaaan     
+				strong Fecha: 
+				| Hoy
+				br
+				strong Comentario: 
+				| PROBANDO
+			li.list-group-item
+				span.badge 4 / 10
+				strong Usuario: 
+				| germaaan     
+				strong Fecha: 
+				| Hoy
+				br
+				strong Comentario: 
+				| PROBANDO
+			li.list-group-item
+				span.badge 4 / 10
+				strong Usuario: 
+				| germaaan     
+				strong Fecha: 
+				| Hoy
+				br
+				strong Comentario: 
+				| PROBANDO
+			li.list-group-item
+				span.badge 4 / 10
+				strong Usuario: 
+				| germaaan     
+				strong Fecha: 
+				| Hoy
+				br
+				strong Comentario: 
+				| PROBANDO
+			li.list-group-item
+				span.badge 4 / 10
+				strong Usuario: 
+				| germaaan     
+				strong Fecha: 
+				| Hoy
+				br
+				strong Comentario: 
+				| PROBANDO
