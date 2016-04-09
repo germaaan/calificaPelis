@@ -1,0 +1,108 @@
+<!DOCTYPE html(lang='es')>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>CalificaPelis: Ver críticas</title>
+    <link rel="stylesheet" href="/style/css/style.css" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/datos">Consultar datos</a></li>
+                    <li><a href="/">Añadir película</a></li>
+                    <li><a href="/">Hacer crítica</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="starter-template">
+            <script src="/js/gestion_datos.js"></script>
+            <script type="text/javascript">
+                listarPeliculas([{
+                    "nombre": "El padrino                                                                                          "
+                }, {
+                    "nombre": "El caballero oscuro                                                                                 "
+                }, {
+                    "nombre": "La lista de Schindler                                                                               "
+                }, {
+                    "nombre": "El señor de los anillos: El retorno del rey                                                         "
+                }, {
+                    "nombre": "Origen                                                                                              "
+                }])
+            </script>
+            <div style="height:22px;" class="col-xs-12"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="container col-md-4">
+                        <h2 style="text-align: center">Seleccionar película:</h2>
+                        <div style="height:14px;" class="col-xs-12"></div>
+                        <form role="form" action="informacion" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="center-block">
+                                    <select id="listado" name="listado" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="center-block">
+                                    <button type="submit" class="btn btn-default center-block">Ver críticas</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="container col-md-8">
+                        <h1 class="col-md-5 col-md-offset-3">Pelicula</h1>
+                        <div style="height:14px;" class="col-xs-12"></div>
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="director" class="control-label col-sm-5">Director:</label>
+                                <div class="col-md-7">
+                                    <input id="director" type="text" style="background-color: white" disabled="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="anio" class="control-label col-sm-5">Año:</label>
+                                <div class="col-sm-7">
+                                    <input id="anio" type="text" style="background-color: white" disabled="" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="genero" class="control-label col-sm-5">Género:</label>
+                                <div class="col-sm-7">
+                                    <input id="genero" type="text" style="background-color: white" disabled="" class="form-control" />
+                                </div>
+                            </div>
+                        </form>
+                        <div style="height:25px;" class="col-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ul style="height: 43%; overflow-y: scroll;" class="list-group">
+                    <li class="list-group-item"><span class="badge">4 / 10</span><strong>Usuario: </strong>germaaan <strong>Fecha: </strong>Hoy
+                        <br/><strong>Comentario: </strong>PROBANDO</li>
+                    <li class="list-group-item"><span class="badge">4 / 10</span><strong>Usuario: </strong>germaaan <strong>Fecha: </strong>Hoy
+                        <br/><strong>Comentario: </strong>PROBANDO</li>
+                    <li class="list-group-item"><span class="badge">4 / 10</span><strong>Usuario: </strong>germaaan <strong>Fecha: </strong>Hoy
+                        <br/><strong>Comentario: </strong>PROBANDO</li>
+                    <li class="list-group-item"><span class="badge">4 / 10</span><strong>Usuario: </strong>germaaan <strong>Fecha: </strong>Hoy
+                        <br/><strong>Comentario: </strong>PROBANDO</li>
+                    <li class="list-group-item"><span class="badge">4 / 10</span><strong>Usuario: </strong>germaaan <strong>Fecha: </strong>Hoy
+                        <br/><strong>Comentario: </strong>PROBANDO</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>

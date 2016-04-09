@@ -1,13 +1,14 @@
 var index = require("./routes/index");
-var informacion = require("./routes/informacion");
+var datos = require("./routes/datos");
 
 module.exports = function(app) {
 	// Inicio
 	app.get("/", index.content);
 	app.get("/index", index.content);
-	app.get("/informacion", informacion.seleccionar);
-	app.get("/peliculas/:nombre", informacion.peliculas);
-	app.get("/criticas/:pelicula", informacion.criticas);
+	app.get("/datos", datos.seleccionar);
+	app.get("/peliculas", datos.nombresPeliculas);
+	app.get("/peliculas/:nombre", datos.peliculas);
+	app.get("/criticas/:pelicula", datos.criticas);
 
 	// Captura errores 404 y los reenvia al manejador de errores
 	app.use(function(req, res, next) {

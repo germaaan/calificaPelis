@@ -1,9 +1,7 @@
 extends layout
 
 block content
-	script(src='/js/cargarPeliculas.js')
-	script(type='text/javascript').
-		listarPeliculas(!{JSON.stringify(data)})
+	script(src='/js/gestion_datos.js')
 
 	.col-xs-12(style='height:22px;')
 	.container
@@ -14,7 +12,7 @@ block content
 				form.form-horizontal(role='form', action='informacion', method='post')
 					.form-group
 						.center-block
-							select#listado.form-control(name='listado')
+							select#listado.form-control
 					.form-group
 						.center-block
 							button.btn.btn-default.center-block(type='submit') Ver críticas
