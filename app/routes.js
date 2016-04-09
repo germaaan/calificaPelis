@@ -1,12 +1,13 @@
 var index = require("./routes/index");
-var ver = require("./routes/ver");
+var informacion = require("./routes/informacion");
 
 module.exports = function(app) {
 	// Inicio
 	app.get("/", index.content);
 	app.get("/index", index.content);
-	app.get("/ver", ver.seleccionar);
-	app.post("/ver", ver.leer);
+	app.get("/informacion", informacion.seleccionar);
+	app.get("/peliculas/:nombre", informacion.peliculas);
+	app.get("/criticas/:pelicula", informacion.criticas);
 
 	// Captura errores 404 y los reenvia al manejador de errores
 	app.use(function(req, res, next) {
