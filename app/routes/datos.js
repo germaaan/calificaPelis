@@ -2,45 +2,14 @@
 var pg = require("pg");
 var connectionString = "postgres://calificador:calificador@localhost/calificaciones";
 
-exports.crearPeliculas = function(req, res) {
-    res.render("peliculas_get", {
-        title: "CalificaPelis: Añadir película"
+exports.consultar = function(req, res) {
+    res.render("consultar", {
+        title: "CalificaPelis: Consultar",
     });
 };
 
-exports.nuevasPeliculas = function(req, res) {
-		console.log(req.body);
-
-		/*
-    var results = [];
-
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        if (err) {
-            done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
-        }
-
-        client.query("INSERT INTO peliculas (nombre, director, anio, genero) VALUES ($1, $2, $3, $4)", [req.params.nombre, req.params.director, req.params.anio, req.params.genero]);
-
-        var query = client.query("SELECT * FROM peliculas");
-
-        query.on('row', function(row) {
-            results.push(row);
-        });
-
-        query.on('end', function() {
-            done();
-
-            res.json(results);
-        });
-    });
-		*/
-
-    res.render("peliculas_post", {
+exports.crearPeliculas = function(req, res) {
+    res.render("peliculas_get", {
         title: "CalificaPelis: Añadir película"
     });
 };
@@ -51,69 +20,52 @@ exports.crearCriticas = function(req, res) {
     });
 };
 
-exports.nuevasCriticas = function(req, res) {
-		console.log(req.body);
-
-		/*
-    var results = [];
-
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        if (err) {
-            done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
-        }
-
-        client.query("INSERT INTO peliculas (nombre, director, anio, genero) VALUES ($1, $2, $3, $4)", [req.params.nombre, req.params.director, req.params.anio, req.params.genero]);
-
-        var query = client.query("SELECT * FROM peliculas");
-
-        query.on('row', function(row) {
-            results.push(row);
-        });
-
-        query.on('end', function() {
-            done();
-
-            res.json(results);
-        });
-    });
-		*/
-
-    res.render("criticas_post", {
-        title: "CalificaPelis: Añadir critica"
-    });
-};
-
-exports.seleccionar = function(req, res) {
+exports.nuevasPeliculas = function(req, res) {
     var results = [];
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
+            error(err, res, "Error: no se ha podido conectar a la base de datos.");
         }
 
-        var query = client.query("SELECT nombre FROM peliculas");
+        client.query("INSERT INTO peliculas (nombre, director, anio, genero) VALUES ($1, $2, $3, $4)", [req.body.nombre, req.body.director, req.body.anio, req.body.genero], function(err, result) {
+            if (err) {
+                done();
+                error(err, res, "No se ha podido añadir la película introducida.");
+            } else {
+                done();
 
-        query.on("row", function(row) {
-            results.push(row);
+                res.render("peliculas_post", {
+                    title: "CalificaPelis: Añadir película",
+                    data: results
+                });
+            }
         });
+    });
+};
 
-        query.on("end", function() {
+exports.nuevasCriticas = function(req, res) {
+    var results = [];
+
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
             done();
+            error(err, res, "Error: no se ha podido conectar a la base de datos.");
+        }
 
-            res.render("datos", {
-                title: "CalificaPelis: Ver críticas",
-                data: results
-            });
+        client.query("INSERT INTO criticas (pelicula, usuario, texto, nota) VALUES ((SELECT id FROM peliculas WHERE nombre = $1), $2, $3, $4)", [req.body.pelicula, req.body.usuario, req.body.texto, req.body.nota], function(err, result) {
+            if (err) {
+                done();
+                error(err, res, "No se ha podido añadir la película introducida.");
+            } else {
+                done();
+
+                res.render("criticas_post", {
+                    title: "CalificaPelis: Añadir critica",
+                    data: results
+                });
+            }
         });
     });
 };
@@ -124,11 +76,7 @@ exports.nombresPeliculas = function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
+            error(err, res, "Error: no se ha podido conectar a la base de datos.");
         }
 
         var query = client.query("SELECT nombre FROM peliculas");
@@ -146,18 +94,14 @@ exports.nombresPeliculas = function(req, res) {
     });
 };
 
-exports.peliculas = function(req, res) {
+exports.datosPeliculas = function(req, res) {
     var nombre = req.params.nombre.substr(1, req.params.nombre.length);
     var results = [];
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
+            error(err, res, "Error: no se ha podido conectar a la base de datos.");
         }
 
         var query = client.query("SELECT nombre, director, anio, genero FROM peliculas WHERE nombre=$1", [nombre]);
@@ -175,19 +119,14 @@ exports.peliculas = function(req, res) {
     });
 };
 
-exports.criticas = function(req, res) {
+exports.datosCriticas = function(req, res) {
     var pelicula = req.params.pelicula.substr(1, req.params.pelicula.length);
-    console.log(pelicula);
     var results = [];
 
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             done();
-            console.log(err);
-            return res.status(500).json({
-                success: false,
-                data: err
-            });
+            error(err, res, "Error: no se ha podido conectar a la base de datos.");
         }
 
         var query = client.query("SELECT peliculas.nombre, criticas.usuario, criticas.fecha, criticas.texto, criticas.nota FROM peliculas INNER JOIN criticas ON peliculas.id=criticas.pelicula WHERE peliculas.nombre=$1", [pelicula]);
@@ -204,3 +143,11 @@ exports.criticas = function(req, res) {
         });
     });
 };
+
+function error(err, res, mensaje) {
+    console.log(err);
+    res.status(500);
+    res.render("error", {
+        mensaje: mensaje
+    });
+}

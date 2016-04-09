@@ -9,7 +9,7 @@ block content
             .form-group
                 label.control-label.col-sm-2(for='nombre') Nombre:
                 .col-sm-10
-                    input#nombre.form-control(name='nombre', type='text', maxlength='100', pattern='^[A-ZÁÉÍÓÚ][a-záéíóúñ0-9]+[ [a-záéíóúñ0-9]+]*$', title='Primera letra mayusculas, resto minúsculas. Solo se pueden usar letras y números. No se permite más de un espacio entre palabras. Máximo 100 caracteres.', required='')
+                    input#nombre.form-control(name='nombre', type='text', maxlength='100', pattern='^[A-ZÁÉÍÓÚ][a-záéíóúñ0-9]+[,?:? {1}[A-ZÁÉÍÓÚa-záéíóúñ0-9]+]*$', title='Primera letra mayusculas, resto minúsculas. Solo se pueden usar letras y números. No se permite más de un espacio entre palabras. Máximo 100 caracteres.', required='')
             .form-group
                 label.control-label.col-sm-2(for='director') Director:
                 .col-sm-10

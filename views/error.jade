@@ -1,6 +1,10 @@
 extends layout
 
 block content
-    h1= message
-    h2= error.status
-    pre #{error.stack}
+    .col-md-4.col-md-offset-4.text-center
+        h2= mensaje
+        .col-xs-12(style='height:20px;')
+        h4 Correo de contacto:
+        a(href='mailto:germanm@correo.ugr.es?Subject=Error%20CalificaPelis', target='_top') germanm@correo.ugr.es
+        .col-xs-12(style='height:14px;')
+        img.img-responsive.center-block(src='/images/error.png', alt='imagen_error')

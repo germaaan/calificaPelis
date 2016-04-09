@@ -8,7 +8,7 @@ CREATE TABLE peliculas(
   director CHAR(50) NOT NULL,
   anio SMALLINT NOT NULL,
   genero CHAR(20) NOT NULL,
-  CHECK (anio >= 1900 AND nota <= 2016)
+  CHECK (anio >= 1900 AND anio <= 2016)
 );
 
 CREATE TABLE criticas(
@@ -33,6 +33,7 @@ INSERT INTO criticas (pelicula, usuario, texto, nota) VALUES ((SELECT id FROM pe
 
 DROP USER IF EXISTS calificador;
 CREATE USER calificador WITH PASSWORD 'calificador';
-GRANT ALL PRIVILEGES ON DATABASE calificaciones to calificador;
-GRANT ALL PRIVILEGES ON TABLE peliculas TO calificador;
-GRANT ALL PRIVILEGES ON TABLE criticas TO calificador;
+GRANT CONNECT ON DATABASE calificaciones to calificador;
+GRANT SELECT, INSERT ON TABLE peliculas TO calificador;
+GRANT SELECT, INSERT ON TABLE criticas TO calificador;
+GRANT USAGE, SELECT ON SEQUENCE peliculas_id_seq TO calificador;
