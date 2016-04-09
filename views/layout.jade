@@ -5,7 +5,7 @@ head
     meta(name='description', content='')
     meta(name='author', content='')
     link(rel='icon', href='/images/favicon.ico')
-    title= title
+    title= titulo
     link(rel='stylesheet', href='/style/css/style.css')
     script(src='/lib/jquery/dist/jquery.min.js')
 body
@@ -22,11 +22,11 @@ body
                     li
                         a(href='/') Inicio
                     li
-                        a(href='/datos') Consultar
+                        a(href='/consultar') Consultar
                     li
                         a(href='/peliculas/nuevas') Añadir películas
                     li
-                        a(href='/criticas/nuevas') Hacer críticas
+                        a(href='/criticas/nuevas') Añadir críticas
     .container
         .starter-template
             block content

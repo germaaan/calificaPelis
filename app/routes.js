@@ -2,10 +2,10 @@ var index = require("./routes/index");
 var datos = require("./routes/datos");
 
 module.exports = function(app) {
-	// Inicio
+	// Rutas de acceso
 	app.get("/", index.index);
 	app.get("/index", index.index);
-	app.get("/datos", datos.consultar);
+	app.get("/consultar", datos.consultar);
 	app.get("/peliculas", datos.nombresPeliculas);
 	app.get("/peliculas/nuevas", datos.crearPeliculas);
 	app.post("/peliculas/nuevas", datos.nuevasPeliculas);
@@ -14,7 +14,7 @@ module.exports = function(app) {
 	app.get("/peliculas/:nombre", datos.datosPeliculas);
 	app.get("/criticas/:pelicula", datos.datosCriticas);
 
-	// Captura errores 404
+	// Captura errores
 	app.use(function(req, res, next) {
 		var err = new Error("Error: página no encontrada.");
 		err.status = 404;
