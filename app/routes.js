@@ -10,7 +10,7 @@ module.exports = function(app) {
 	app.get("/peliculas/nuevas", datos.crearPeliculas);
 	app.post("/peliculas/nuevas", datos.nuevasPeliculas);
 	app.get("/criticas/nuevas", datos.crearCriticas);
-	//app.post("/criticas/nuevas", datos.nuevasCriticas);
+	app.post("/criticas/nuevas", datos.nuevasCriticas);
 	app.get("/peliculas/:nombre", datos.peliculas);
 	app.get("/criticas/:pelicula", datos.criticas);
 

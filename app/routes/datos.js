@@ -46,8 +46,45 @@ exports.nuevasPeliculas = function(req, res) {
 };
 
 exports.crearCriticas = function(req, res) {
-    res.render("criticas", {
+    res.render("criticas_get", {
         title: "CalificaPelis: Añadir crítica"
+    });
+};
+
+exports.nuevasCriticas = function(req, res) {
+		console.log(req.body);
+
+		/*
+    var results = [];
+
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        if (err) {
+            done();
+            console.log(err);
+            return res.status(500).json({
+                success: false,
+                data: err
+            });
+        }
+
+        client.query("INSERT INTO peliculas (nombre, director, anio, genero) VALUES ($1, $2, $3, $4)", [req.params.nombre, req.params.director, req.params.anio, req.params.genero]);
+
+        var query = client.query("SELECT * FROM peliculas");
+
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        query.on('end', function() {
+            done();
+
+            res.json(results);
+        });
+    });
+		*/
+
+    res.render("criticas_post", {
+        title: "CalificaPelis: Añadir critica"
     });
 };
 

@@ -7,7 +7,8 @@ CREATE TABLE peliculas(
   nombre CHAR(100) NOT NULL UNIQUE,
   director CHAR(50) NOT NULL,
   anio SMALLINT NOT NULL,
-  genero CHAR(20) NOT NULL
+  genero CHAR(20) NOT NULL,
+  CHECK (anio >= 1900 AND nota <= 2016)
 );
 
 CREATE TABLE criticas(
