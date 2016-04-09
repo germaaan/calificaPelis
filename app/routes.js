@@ -3,10 +3,14 @@ var datos = require("./routes/datos");
 
 module.exports = function(app) {
 	// Inicio
-	app.get("/", index.content);
-	app.get("/index", index.content);
+	app.get("/", index.index);
+	app.get("/index", index.index);
 	app.get("/datos", datos.seleccionar);
 	app.get("/peliculas", datos.nombresPeliculas);
+	app.get("/peliculas/nuevas", datos.crearPeliculas);
+	//app.post("/peliculas/nuevas", datos.nuevasPeliculas);
+	app.get("/criticas/nuevas", datos.crearCriticas);
+	//app.post("/criticas/nuevas", datos.nuevasCriticas);
 	app.get("/peliculas/:nombre", datos.peliculas);
 	app.get("/criticas/:pelicula", datos.criticas);
 

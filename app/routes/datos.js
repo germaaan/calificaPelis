@@ -2,6 +2,18 @@
 var pg = require("pg");
 var connectionString = "postgres://calificador:calificador@localhost/calificaciones";
 
+exports.crearPeliculas = function(req, res) {
+	res.render("peliculas", {
+		title: "CalificaPelis: Añadir película"
+	});
+};
+
+exports.crearCriticas = function(req, res) {
+	res.render("criticas", {
+		title: "CalificaPelis: Añadir crítica"
+	});
+};
+
 exports.seleccionar = function(req, res) {
 	var results = [];
 
