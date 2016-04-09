@@ -9,13 +9,13 @@ block content
 			.container.col-md-4
 				h2(style='text-align: center') Seleccionar película:
 				.col-xs-12(style='height:14px;')
-				form.form-horizontal(role='form', action='informacion', method='post')
+				form.form-horizontal(role='form')
 					.form-group
 						.center-block
 							select#listado.form-control
 					.form-group
 						.center-block
-							button.btn.btn-default.center-block(type='submit') Ver críticas
+							button#ver.btn.btn-default.center-block(type='button') Ver críticas
 
 			.container.col-md-8
 				h1.col-md-5.col-md-offset-3 Pelicula
@@ -36,49 +36,4 @@ block content
 				.col-xs-12(style='height:25px;')
 
 	.container
-		ul.list-group(style='height: 43%; overflow-y: scroll;')
-			li.list-group-item
-				span.badge 4 / 10
-				strong Usuario: 
-				| germaaan     
-				strong Fecha: 
-				| Hoy
-				br
-				strong Comentario: 
-				| PROBANDO
-			li.list-group-item
-				span.badge 4 / 10
-				strong Usuario: 
-				| germaaan     
-				strong Fecha: 
-				| Hoy
-				br
-				strong Comentario: 
-				| PROBANDO
-			li.list-group-item
-				span.badge 4 / 10
-				strong Usuario: 
-				| germaaan     
-				strong Fecha: 
-				| Hoy
-				br
-				strong Comentario: 
-				| PROBANDO
-			li.list-group-item
-				span.badge 4 / 10
-				strong Usuario: 
-				| germaaan     
-				strong Fecha: 
-				| Hoy
-				br
-				strong Comentario: 
-				| PROBANDO
-			li.list-group-item
-				span.badge 4 / 10
-				strong Usuario: 
-				| germaaan     
-				strong Fecha: 
-				| Hoy
-				br
-				strong Comentario: 
-				| PROBANDO
+		ul#lista-comentarios.list-group(style='height: 43%; overflow-y: scroll;')

@@ -11,11 +11,29 @@ $(document).ready(function() {
 		cambiaInfoPelicula();
 	});
 
+	$("#ver").click(function() {
+		$("#lista-comentarios").empty();
+
+		$.getJSON("criticas/:" + $("#listado").val(), function(data) {
+			$.each(data, function(clave, valor) {
+				var critica = "<li class='list-group-item'>" +
+					"<span class='badge'>" + valor.nota + " / 10</span>" +
+					"<strong>Usuario: </strong>" + valor.usuario +
+					"<strong>Fecha: </strong>" + valor.fecha +
+					"<br/><strong>Comentario: </strong>" + valor.texto + "</li>";
+
+				$("#lista-comentarios").append(critica);
+			});
+		});
+	});
+
 	function cambiaInfoPelicula() {
 		$.getJSON("peliculas/:" + $("#listado").val(), function(data) {
 			$("#director").val(data[0].director);
 			$("#anio").val(data[0].anio);
 			$("#genero").val(data[0].genero);
 		});
+
+		$("#lista-comentarios").empty();
 	}
 });
