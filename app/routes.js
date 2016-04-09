@@ -8,13 +8,13 @@ module.exports = function(app) {
 	app.get("/datos", datos.seleccionar);
 	app.get("/peliculas", datos.nombresPeliculas);
 	app.get("/peliculas/nuevas", datos.crearPeliculas);
-	//app.post("/peliculas/nuevas", datos.nuevasPeliculas);
+	app.post("/peliculas/nuevas", datos.nuevasPeliculas);
 	app.get("/criticas/nuevas", datos.crearCriticas);
 	//app.post("/criticas/nuevas", datos.nuevasCriticas);
 	app.get("/peliculas/:nombre", datos.peliculas);
 	app.get("/criticas/:pelicula", datos.criticas);
 
-	// Captura errores 404 y los reenvia al manejador de errores
+	// Captura errores 404
 	app.use(function(req, res, next) {
 		var err = new Error("Error 404: Página no encontrada.");
 		err.status = 404;

@@ -1,49 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html(lang='es')>
+
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>CalificaPelis: Añadir película</title>
+    <link rel="stylesheet" href="/style/css/style.css" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
 </head>
+
 <body>
-
-<div class="container">
-  <h2>Añadir películas</h2>
-  <form class="form-horizontal" role="form">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="nombre">
-      </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/datos">Consultar datos</a></li>
+                    <li><a href="/peliculas/nuevas">Añadir películas</a></li>
+                    <li><a href="/criticas/nuevas">Hacer críticas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="starter-template">
+            <script src="/js/crear_peliculas.js"></script>
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <h2>Añadir películas</h2>
+                <div style="height:14px;" class="col-xs-12"></div>
+                <form id="insertar" role="form" action="" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="nombre" class="control-label col-sm-2">Nombre:</label>
+                        <div class="col-sm-10">
+                            <input id="nombre" name="nombre" type="text" pattern="[A-Za-z]{4-16}" title="NO FUNCA" required="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="director" class="control-label col-sm-2">Director:</label>
+                        <div class="col-sm-10">
+                            <input id="director" name="director" type="text" pattern="^[A-Z¡¿]w+[sw.,:&amp;(-¡!¿?)]*" required="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="anio" class="control-label col-sm-2">Año:</label>
+                        <div class="col-sm-10">
+                            <input id="anio" name="anio" type="number" min="1900" max="2016" required="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="genero" class="control-label col-sm-2">Género:</label>
+                        <div class="col-sm-10">
+                            <input id="genero" name="genero" type="text" pattern="^[A-Z¡¿]w+[sw.,:&amp;(-¡!¿?)]*" required="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="crear" type="submit" class="btn btn-default">Crear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="director">Director:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="director">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="anio">Año:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="anio">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="genero">Género:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="genero">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Crear</button>
-      </div>
-    </div>
-  </form>
-</div>
-
 </body>
-</html>
