@@ -2,16 +2,23 @@ var pg = require("pg");
 var db = require("./db");
 
 // Sección "Consultar"
-exports.data = function(req, res) {
-	res.render("data", {
-		titulo: "CalificaPelis: Consultar",
+exports.peliculasDataForm = function(req, res) {
+	res.render("peliculas_data_form", {
+		titulo: "CalificaPelis: Consultar películas",
 	});
 };
 
 // Sección "Añadir películas"
-exports.peliculasForm = function(req, res) {
-	res.render("peliculas_form", {
+exports.peliculasInsertForm = function(req, res) {
+	res.render("peliculas_insert_form", {
 		titulo: "CalificaPelis: Añadir película"
+	});
+};
+
+// Sección "Editar película"
+exports.peliculasUpdateForm = function(req, res) {
+	res.render("peliculas_update_form", {
+		titulo: "CalificaPelis: Editar películas"
 	});
 };
 
@@ -27,6 +34,35 @@ exports.peliculasInsert = function(req, res) {
 			if (err) {
 				done();
 				db.error(err, res, "No se ha podido añadir la película introducida, posiblemente ya exista en la base de datos.");
+			} else {
+				done();
+
+				res.render("peliculas_data", {
+					titulo: "CalificaPelis: Añadir/actualizar película",
+					datos: {
+						"nombre": req.body.nombre,
+						"director": req.body.director,
+						"anio": req.body.anio,
+						"genero": req.body.genero
+					}
+				});
+			}
+		});
+	});
+};
+
+// Actualiza película en base de datos
+exports.peliculasUpdate = function(req, res) {
+	pg.connect(db.connectionString, function(err, client, done) {
+		if (err) {
+			done();
+			db.error(err, res, "Error: no se ha podido conectar a la base de datos.");
+		}
+
+		client.query("UPDATE peliculas SET director=($1),anio=($2),genero=($3) WHERE nombre=($4)", [req.body.director.trim(), req.body.anio, req.body.genero.trim(), req.body.nombre.trim()], function(err, result) {
+			if (err) {
+				done();
+				db.error(err, res, "No se ha podido actualizar la película introducida. Compruebe los datos introducidos.");
 			} else {
 				done();
 

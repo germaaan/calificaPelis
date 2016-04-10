@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	$.getJSON("/peliculas", function(data) {
+	$.getJSON("/peliculas/nombres", function(data) {
 		data = $(data).sort(ordenarPeliculas);
 
 		$.each(data, function(clave, valor) {
-			$("#pelicula").append("<option>" + valor.nombre + "</option>");
+			$("#peliculas").append("<option>" + valor.nombre + "</option>");
 		});
 	});
 

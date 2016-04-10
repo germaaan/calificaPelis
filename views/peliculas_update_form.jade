@@ -1,15 +1,16 @@
 extends layout
 
 block content
+    script(src='/js/peliculas_update.js')
 
     .col-md-4.col-md-offset-4.text-center
-        h2 Añadir películas
+        h2 Editar películas
         .col-xs-12(style='height:14px;')
         form#insertar.form-horizontal(role='form', action='', method='post')
             .form-group
                 label.control-label.col-sm-2(for='nombre') Nombre:
                 .col-sm-10
-                    input#nombre.form-control(name='nombre', type='text', maxlength='100', pattern='^[A-ZÁÉÍÓÚ][a-záéíóúñ0-9]+[,?:? {1}[A-ZÁÉÍÓÚa-záéíóúñ0-9]+]*$', title='Primera letra mayusculas, resto minúsculas. Solo se pueden usar letras y números. No se permite más de un espacio entre palabras. Máximo 100 caracteres.', required='')
+                    select#nombre.form-control(name='nombre')
             .form-group
                 label.control-label.col-sm-2(for='director') Director:
                 .col-sm-10
@@ -24,4 +25,7 @@ block content
                     input#anio.form-control(name='anio', type='number', min='1900', max='2016', title='El año introducido tiene que estar entre 1900 y 2016', required='')
             .form-group
                 .col-sm-offset-2.col-sm-10
-                    button#crear.btn.btn-default(type='submit') Crear
+                    button#editar.btn.btn-default(type='submit') Editar
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    button#restablecer.btn.btn-default(type='button') Restablecer

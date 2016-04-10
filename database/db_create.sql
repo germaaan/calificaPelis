@@ -34,6 +34,6 @@ INSERT INTO criticas (pelicula, usuario, texto, nota) VALUES ((SELECT id FROM pe
 DROP USER IF EXISTS calificador;
 CREATE USER calificador WITH PASSWORD 'calificador';
 GRANT CONNECT ON DATABASE calificaciones to calificador;
-GRANT SELECT, INSERT ON TABLE peliculas TO calificador;
-GRANT SELECT, INSERT ON TABLE criticas TO calificador;
+GRANT SELECT, INSERT, UPDATE ON TABLE peliculas TO calificador;
+GRANT SELECT, INSERT, DELETE ON TABLE criticas TO calificador;
 GRANT USAGE, SELECT ON SEQUENCE peliculas_id_seq TO calificador;

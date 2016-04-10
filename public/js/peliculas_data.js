@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$.getJSON("peliculas", function(data) {
+	$.getJSON("/peliculas/nombres", function(data) {
 		data = $(data).sort(ordenarPeliculas);
 
 		$.each(data, function(clave, valor) {
@@ -16,7 +16,7 @@ $(document).ready(function() {
 	$("#ver").click(function() {
 		$("#lista-comentarios").empty();
 
-		$.getJSON("criticas/:" + $("#listado").val(), function(data) {
+		$.getJSON("/criticas/:" + $("#listado").val(), function(data) {
 			data = $(data).sort(ordenarCriticas);
 
 			$.each(data, function(clave, valor) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 	}
 
 	function cambiaInfoPelicula() {
-		$.getJSON("peliculas/:" + $("#listado").val(), function(data) {
+		$.getJSON("/peliculas/:" + $("#listado").val(), function(data) {
 			$("#director").val(data[0].director);
 			$("#anio").val(data[0].anio);
 			$("#genero").val(data[0].genero);

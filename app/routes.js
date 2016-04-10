@@ -5,16 +5,17 @@ var criticas = require("./routes/criticas");
 module.exports = function(app) {
 	// Rutas de acceso
 	app.get("/", index.index);
-	app.get("/index", index.index);
-	app.get("/consultar", peliculas.data);
-	app.get("/peliculas", peliculas.peliculasNombres);
-	app.get("/peliculas/nuevas", peliculas.peliculasForm);
+	app.get("/peliculas/consultar", peliculas.peliculasDataForm);
+	app.get("/peliculas/nuevas", peliculas.peliculasInsertForm);
+	app.get("/peliculas/editar", peliculas.peliculasUpdateForm);
 	app.post("/peliculas/nuevas", peliculas.peliculasInsert);
-	//app.get("/peliculas/editar", datos.peliculasUpdate);
+	app.post("/peliculas/editar", peliculas.peliculasUpdate);
+	app.get("/peliculas/nombres", peliculas.peliculasNombres);
 	app.get("/peliculas/:nombre", peliculas.peliculasData);
-	app.get("/criticas/nuevas", criticas.criticasForm);
+	app.get("/criticas/nuevas", criticas.criticasInsertForm);
+	//app.get("/criticas/eliminar", criticas.criticasDeleteForm);
 	app.post("/criticas/nuevas", criticas.criticasInsert);
-	//app.get("/criticas/eliminar", datos.criticasDelete);
+	//app.post("/criticas/eliminar", datos.criticasDelete);
 	app.get("/criticas/:pelicula", criticas.criticasData);
 
 	// Captura errores

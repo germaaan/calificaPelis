@@ -2,8 +2,8 @@ var pg = require("pg");
 var db = require("./db");
 
 // Sección "Añadir críticas"
-exports.criticasForm = function(req, res) {
-	res.render("criticas_form", {
+exports.criticasInsertForm = function(req, res) {
+	res.render("criticas_insert_form", {
 		titulo: "CalificaPelis: Añadir crítica"
 	});
 };
