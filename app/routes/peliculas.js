@@ -1,5 +1,5 @@
 var pg = require("pg");
-var db = require("./db");
+var db = require("../db");
 
 // Sección "Consultar"
 exports.peliculasDataForm = function(req, res) {

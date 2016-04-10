@@ -38,7 +38,7 @@
 	"scripts": {
 		"start": "pm2 start app.js && pm2 save",
 		"stop": "pm2 stop app",
-		"libs": "bower install",
+		"libs": "bower install --allow-root",
 		"sass": "node-sass public/style/scss/*.scss -o public/style/css",
 		"postinstall": "npm run libs && npm run sass",
 		"restart": "pm2 restart app.js && pm2 save",

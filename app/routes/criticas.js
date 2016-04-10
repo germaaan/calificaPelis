@@ -1,5 +1,5 @@
 var pg = require("pg");
-var db = require("./db");
+var db = require("../db");
 
 // Sección "Añadir críticas"
 exports.criticasInsertForm = function(req, res) {
