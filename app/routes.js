@@ -1,18 +1,21 @@
 var index = require("./routes/index");
-var datos = require("./routes/datos");
+var peliculas = require("./routes/peliculas");
+var criticas = require("./routes/criticas");
 
 module.exports = function(app) {
 	// Rutas de acceso
 	app.get("/", index.index);
 	app.get("/index", index.index);
-	app.get("/consultar", datos.consultar);
-	app.get("/peliculas", datos.nombresPeliculas);
-	app.get("/peliculas/nuevas", datos.crearPeliculas);
-	app.post("/peliculas/nuevas", datos.nuevasPeliculas);
-	app.get("/criticas/nuevas", datos.crearCriticas);
-	app.post("/criticas/nuevas", datos.nuevasCriticas);
-	app.get("/peliculas/:nombre", datos.datosPeliculas);
-	app.get("/criticas/:pelicula", datos.datosCriticas);
+	app.get("/consultar", peliculas.data);
+	app.get("/peliculas", peliculas.peliculasNombres);
+	app.get("/peliculas/nuevas", peliculas.peliculasForm);
+	app.post("/peliculas/nuevas", peliculas.peliculasInsert);
+	//app.get("/peliculas/editar", datos.peliculasUpdate);
+	app.get("/peliculas/:nombre", peliculas.peliculasData);
+	app.get("/criticas/nuevas", criticas.criticasForm);
+	app.post("/criticas/nuevas", criticas.criticasInsert);
+	//app.get("/criticas/eliminar", datos.criticasDelete);
+	app.get("/criticas/:pelicula", criticas.criticasData);
 
 	// Captura errores
 	app.use(function(req, res, next) {
