@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	$.getJSON("peliculas", function(data) {
+		data = $(data).sort(ordenarNombres);
+
 		$.each(data, function(clave, valor) {
 			$("#listado").append("<option>" + valor.nombre + "</option>");
 		});
@@ -26,6 +28,10 @@ $(document).ready(function() {
 			});
 		});
 	});
+
+	function ordenarNombres(a, b) {
+		return a.nombre.toLowerCase() > b.nombre.toLowerCase() ? 1 : -1;
+	}
 
 	function cambiaInfoPelicula() {
 		$.getJSON("peliculas/:" + $("#listado").val(), function(data) {
