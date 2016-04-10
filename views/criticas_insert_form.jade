@@ -10,19 +10,19 @@ block content
             .form-group
                 label.control-label.col-sm-2(for='pelicula') Pelicula:
                 .col-sm-10
-                    select#pelicula.form-control(name='pelicula')
+                    select#pelicula.form-control(name='pelicula', required='')
             .form-group
                 label.control-label.col-sm-2(for='usuario') Usuario:
                 .col-sm-10
-                    input#director.form-control(name='usuario', type='text', maxlength='50', pattern='[A-Za-z0-9]+', title='Solo se pueden usar letras y números sin espacios. Máximo 50 caracteres.', required='')
+                    input#usuario.form-control(name='usuario', type='text', maxlength='50', pattern='[A-Za-z0-9]+', title='Solo se pueden usar letras y números sin espacios. Máximo 50 caracteres.', required='')
             .form-group
                 label.control-label.col-sm-2(for='texto') Texto:
                 .col-sm-10
-                    textarea#genero.form-control(name='texto', style='resize:none; overflow-y: scroll;', cols='50', rows='4', maxlength='500', title='Máximo 500 caracteres.', required='')
+                    textarea#texto.form-control(name='texto', style='resize:none; overflow-y: scroll;', cols='50', rows='4', maxlength='500', title='Máximo 500 caracteres.', required='')
             .form-group
                 label.control-label.col-sm-2(for='nota') Nota:
                 .col-sm-4
-                    input#anio.form-control(name='nota', type='number', step='any', min='0', max='10', title='Valor numérico entre 0 y 10. Se permiten decimales.', required='')
+                    input#nota.form-control(name='nota', type='number', step='any', min='0', max='10', title='Valor numérico entre 0 y 10. Se permiten decimales.', required='')
             .form-group
                 .col-sm-offset-2.col-sm-10
                     button#crear.btn.btn-default(type='submit') Crear

@@ -15,10 +15,17 @@ exports.peliculasInsertForm = function(req, res) {
 	});
 };
 
-// Sección "Editar película"
+// Sección "Editar películas"
 exports.peliculasUpdateForm = function(req, res) {
 	res.render("peliculas_update_form", {
 		titulo: "CalificaPelis: Editar películas"
+	});
+};
+
+// Sección "Eliminar películas"
+exports.peliculasDeleteForm = function(req, res) {
+	res.render("peliculas_delete_form", {
+		titulo: "CalificaPelis: Eliminar películas"
 	});
 };
 
@@ -38,7 +45,7 @@ exports.peliculasInsert = function(req, res) {
 				done();
 
 				res.render("peliculas_data", {
-					titulo: "CalificaPelis: Añadir/actualizar película",
+					titulo: "CalificaPelis: Añadir película",
 					datos: {
 						"nombre": req.body.nombre,
 						"director": req.body.director,
@@ -67,7 +74,36 @@ exports.peliculasUpdate = function(req, res) {
 				done();
 
 				res.render("peliculas_data", {
-					titulo: "CalificaPelis: Añadir/actualizar película",
+					titulo: "CalificaPelis: Actualizar película",
+					datos: {
+						"nombre": req.body.nombre,
+						"director": req.body.director,
+						"anio": req.body.anio,
+						"genero": req.body.genero
+					}
+				});
+			}
+		});
+	});
+};
+
+// Eliminar película en base de datos
+exports.peliculasDelete = function(req, res) {
+	pg.connect(db.connectionString, function(err, client, done) {
+		if (err) {
+			done();
+			db.error(err, res, "Error: no se ha podido conectar a la base de datos.");
+		}
+
+		client.query("DELETE FROM peliculas WHERE nombre=($1)", [req.body.nombre.trim()], function(err, result) {
+			if (err) {
+				done();
+				db.error(err, res, "No se ha podido eliminar la película introducida. Compruebe los datos introducidos.");
+			} else {
+				done();
+
+				res.render("peliculas_data", {
+					titulo: "CalificaPelis: Eliminar películas",
 					datos: {
 						"nombre": req.body.nombre,
 						"director": req.body.director,

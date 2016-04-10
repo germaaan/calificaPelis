@@ -23,9 +23,9 @@ $(document).ready(function() {
 
 	function establecerDatosPelicula() {
 		$.getJSON("/peliculas/:" + $("#nombre").val(), function(data) {
-			$("#director").val(data[0].director);
+			$("#director").val(data[0].director.trim());
 			$("#anio").val(data[0].anio);
-			$("#genero").val(data[0].genero);
+			$("#genero").val(data[0].genero.trim());
 		});
 	}
 });

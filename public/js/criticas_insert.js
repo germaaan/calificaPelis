@@ -3,7 +3,7 @@ $(document).ready(function() {
 		data = $(data).sort(ordenarPeliculas);
 
 		$.each(data, function(clave, valor) {
-			$("#peliculas").append("<option>" + valor.nombre + "</option>");
+			$("#pelicula").append("<option>" + valor.nombre + "</option>");
 		});
 	});
 
